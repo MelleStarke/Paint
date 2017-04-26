@@ -13,7 +13,7 @@ public class Window extends JFrame {
 		// ‘super ’ calls a function inherited from the parent class ( JFrame )
 		super();
 		setTitle(" Callbacks ");
-		setSize(new Dimension(450, 375));
+		setSize(new Dimension(1000, 630));
 		// Make sure the window appears in the middle of your screen
 		setLocationRelativeTo(null);
 		// Determines what should happen when the frame is closed
@@ -25,7 +25,7 @@ public class Window extends JFrame {
 		// Places the DrawPanel in the center of the frame
 		getContentPane().add(dp, BorderLayout.CENTER);
 		// Places the ButtonPanel in the top of the frame
-		getContentPane().add(bp, BorderLayout.NORTH);
+		getContentPane().add(bp, BorderLayout.EAST);
 
 		// Set the window to visible ! Yup ... This is necessary
 		setVisible(true);

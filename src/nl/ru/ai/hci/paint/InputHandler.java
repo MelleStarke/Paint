@@ -121,10 +121,9 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		switch (this.mode) {
 		/*
 		 * case ellipse: this.dp.ellipse(x, y); break; case line:
-		 * this.dp.line(x, y); break;
-		 */case rectangle:
-			this.dp.rectangle(x, y);
-			break;
+		 * this.dp.line(x, y); break; case rectangle: this.dp.rectangle(x, y);
+		 * break;
+		 */
 		case delet:
 			this.dp.delete(x, y);
 		case toFront:

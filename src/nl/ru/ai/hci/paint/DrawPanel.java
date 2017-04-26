@@ -16,11 +16,13 @@ public class DrawPanel extends JPanel {
 	private Color color;
 	public ArrayList<Drawable> shapesList = new ArrayList<Drawable>();
 	private int modCount;
+	private Functions fun;
 
 	public DrawPanel() {
 		super();
 		this.color = Color.BLACK;
 		this.modCount = 0;
+		this.fun = new Functions(this);
 	}
 
 	public DrawPanel(Color c) {

@@ -3,6 +3,7 @@ package nl.ru.ai.hci.paint;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 
 public class Window extends JFrame {
@@ -25,7 +26,7 @@ public class Window extends JFrame {
 		// Places the DrawPanel in the center of the frame
 		getContentPane().add(dp, BorderLayout.CENTER);
 		// Places the ButtonPanel in the top of the frame
-		getContentPane().add(bp, BorderLayout.EAST);
+		getContentPane().add(bp, BorderLayout.NORTH);
 
 		// Set the window to visible ! Yup ... This is necessary
 		setVisible(true);

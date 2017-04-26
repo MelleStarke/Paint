@@ -1,5 +1,8 @@
 package nl.ru.ai.hci.paint;
 
+import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -16,6 +19,8 @@ public class ButtonPanel extends JPanel {
         ImageIcon myIcon = new ImageIcon("images/icons/undoIcon.png");
         
 		JButton add = new JButton(myIcon);
+		add.setPreferredSize(new Dimension(40,40));
+		add.setBackground(Color.WHITE);
 		add(add);
 		add.addActionListener(IH);
 		JButton mod = new JButton("mod");

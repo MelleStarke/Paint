@@ -1,10 +1,12 @@
 package nl.ru.ai.hci.paint;
 
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.geom.Rectangle2D;
 
 public class InputHandler implements ActionListener, MouseListener, MouseMotionListener {
 
@@ -13,18 +15,15 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 	private int tempX;
 	private int tempY;
 	private boolean BeginDragging;
+	public boolean isSelected;
+	private int selectedShapeIndex = -1;
 
 	public InputHandler(DrawPanel dp) {
 		this.dp = dp;
 		this.dp.addMouseListener(this);
 		this.dp.addMouseMotionListener(this);
 		this.BeginDragging = true;
-	}
-
-	public void addDP(DrawPanel dp) {
-		this.dp = dp;
-		dp.addMouseListener(this);
-		dp.addMouseMotionListener(this);
+		this.isSelected = false;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -32,6 +31,7 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		// int randInt = rand.nextInt(13);
 		// System.out.println(randInt);
 		// this.dp.setColor(randomColor(randInt));
+		this.isSelected = false;
 
 		switch (e.getActionCommand()) {
 		case "add":
@@ -55,8 +55,14 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		case "undo":
 			this.dp.delete();
 			break;
-		case "color":
-			this.dp.colorSelect();
+		case "outline color":
+			this.dp.setOutlineColor();
+			break;
+		case "fill color":
+			this.dp.setFillColor();
+			break;
+		case "transform":
+			this.mode = Mode.transform;
 		default:
 			break;
 		}
@@ -98,10 +104,19 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 				this.dp.ellipse(tempX, tempY, arg0.getX(), arg0.getY());
 				break;
 			}
-		case def:
-			break;
+		case transform:
+			if (!this.isSelected) {
+				for (int i = dp.shapesList.size()-1; i >= 0; i--)
+					if (dp.shapesList.get(i).contains(arg0.getX(), arg0.getY())) {
+						this.isSelected = true;
+						this.selectedShapeIndex = i;
+						break;
+					}
+			} else
+				dp.transform(arg0.getX(), arg0.getY(), this.selectedShapeIndex);
 		default:
 			break;
+
 		}
 		this.dp.repaint();
 
@@ -130,6 +145,16 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 			this.dp.toFront(x, y);
 		case toBack:
 			this.dp.toBack(x, y);
+		case transform:
+			this.isSelected = false;
+			this.selectedShapeIndex = -1;
+			for (int i = dp.shapesList.size()-1; i >= 0; i--)
+				if (dp.shapesList.get(i).contains(x, y)) {
+					this.isSelected = true;
+					this.selectedShapeIndex = i;
+					break;
+				}
+
 		default:
 			break;
 		}

@@ -1,0 +1,31 @@
+[initialization steps]
+	right click -> git bash here
+	$ git init                                  \\ initialize new git repository
+	
+	
+[checking git's current status]
+	$ git status                                \\ shows files that are ready to be committed and ones that aren't being tracked as well as your current branch
+	$ git branch                                \\ shows all branches and current branch (always check before pushing/pulling/committing)
+	
+	
+[storing changes]
+	$ git add *                                 \\ add all files to the staging area (before actually saving them in your local repository)
+	$ git commit -m "<comment>"                 \\ save changes in the staging area to your local repository, comment what you changed
+
+
+/*
+ * a branch is a repository and its staging area
+ * you can make one if you want to work on something separate (like a bug)
+ * or if you wanna merge files but you're scared of getting merge conficts
+ */
+[branching]
+	$ git branch <branchname>                   \\ create new branch, copy of current branch
+	$ git checkout <branchname>                 \\ switch to branch
+	
+	
+[remote repository]
+	$ git remote add origin <origin url>.git    \\ link local repository to remote repository (only necessary once)
+	$ git pull origin <branchname>              \\ pull files from a branch branch of the remote repository and merge them with your current branch
+	$ git push origin <branchname>              \\ push files from your current branch to a branch branch of the remote repository and merge them
+		\\ if a push doesn't work, use:
+	$ git push origin HEAD:<branchname>         \\ forces creation of a new branch, or merge with an existing one

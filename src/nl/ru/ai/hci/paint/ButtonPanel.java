@@ -16,6 +16,7 @@ public class ButtonPanel extends JPanel {
 		// Add a button to the panel . The argument to the JButton constructor
 		// will become the text on the button .
 		InputHandler IH = new InputHandler(dp);
+		dp.addIH(IH);
         ImageIcon myIcon = new ImageIcon("images/icons/undoIcon.png");
         
 		JButton add = new JButton(myIcon);
@@ -41,9 +42,15 @@ public class ButtonPanel extends JPanel {
 		JButton und = new JButton("undo");
 		add(und);
 		und.addActionListener(IH);
-		JButton col = new JButton("color");
-		add(col);
-		col.addActionListener(IH);
+		JButton outl = new JButton("outline color");
+		add(outl);
+		outl.addActionListener(IH);
+		JButton fill = new JButton("fill color");
+		add(fill);
+		fill.addActionListener(IH);
+		JButton trans = new JButton("transform");
+		add(trans);
+		trans.addActionListener(IH);
 	}
 
 }

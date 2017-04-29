@@ -49,6 +49,12 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		case "line":
 			this.mode = Mode.line;
 			break;
+		case "image":
+			this.dp.image();
+			break;
+		case "text":
+			this.mode = Mode.text;
+			dp.text();
 		case "delete":
 			this.mode = Mode.delet;
 			break;
@@ -63,6 +69,13 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 			break;
 		case "transform":
 			this.mode = Mode.transform;
+			break;
+		case "to back":
+			this.mode = Mode.toBack;
+			break;
+		case "to front":
+			this.mode = Mode.toFront;
+			break;
 		default:
 			break;
 		}
@@ -106,7 +119,7 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 			}
 		case transform:
 			if (!this.isSelected) {
-				for (int i = dp.shapesList.size()-1; i >= 0; i--)
+				for (int i = dp.shapesList.size() - 1; i >= 0; i--)
 					if (dp.shapesList.get(i).contains(arg0.getX(), arg0.getY())) {
 						this.isSelected = true;
 						this.selectedShapeIndex = i;
@@ -141,20 +154,23 @@ public class InputHandler implements ActionListener, MouseListener, MouseMotionL
 		 */
 		case delet:
 			this.dp.delete(x, y);
+			break;
 		case toFront:
 			this.dp.toFront(x, y);
+			break;
 		case toBack:
 			this.dp.toBack(x, y);
+			break;
 		case transform:
 			this.isSelected = false;
 			this.selectedShapeIndex = -1;
-			for (int i = dp.shapesList.size()-1; i >= 0; i--)
+			for (int i = dp.shapesList.size() - 1; i >= 0; i--)
 				if (dp.shapesList.get(i).contains(x, y)) {
 					this.isSelected = true;
 					this.selectedShapeIndex = i;
 					break;
 				}
-
+			break;
 		default:
 			break;
 		}

@@ -102,7 +102,7 @@ public class MyRectangle implements Drawable {
 	}
 
 	@Override
-	public void modAesthetic(int linewidth, Color outline, Color fill) {
+	public void modAesthetic(int linewidth, Color outline, Color fill, String text) {
 		this.linewidth = linewidth;
 		this.outline =outline;
 		this.fill = fill;

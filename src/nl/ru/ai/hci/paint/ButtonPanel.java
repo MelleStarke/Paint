@@ -19,14 +19,11 @@ public class ButtonPanel extends JPanel {
 		dp.addIH(IH);
         ImageIcon myIcon = new ImageIcon("images/icons/undoIcon.png");
         
-		JButton add = new JButton(myIcon);
-		add.setPreferredSize(new Dimension(40,40));
-		add.setBackground(Color.WHITE);
-		add(add);
-		add.addActionListener(IH);
-		JButton mod = new JButton("mod");
-		add(mod);
-		mod.addActionListener(IH);
+//		JButton add = new JButton(myIcon);
+//		add.setPreferredSize(new Dimension(40,40));
+//		add.setBackground(Color.WHITE);
+//		add(add);
+//		add.addActionListener(IH);
 		JButton rec = new JButton("rectangle");
 		add(rec);
 		rec.addActionListener(IH);
@@ -36,6 +33,12 @@ public class ButtonPanel extends JPanel {
 		JButton ell = new JButton("ellipse");
 		add(ell);
 		ell.addActionListener(IH);
+		JButton img = new JButton("image");
+		add(img);
+		img.addActionListener(IH);
+		JButton text = new JButton("text");
+		add(text);
+		text.addActionListener(IH);
 		JButton del = new JButton("delete");
 		add(del);
 		del.addActionListener(IH);
@@ -51,6 +54,12 @@ public class ButtonPanel extends JPanel {
 		JButton trans = new JButton("transform");
 		add(trans);
 		trans.addActionListener(IH);
+		JButton back = new JButton("to back");
+		add(back);
+		back.addActionListener(IH);
+		JButton front = new JButton("to front");
+		add(front);
+		front.addActionListener(IH);
 	}
 
 }
